@@ -163,7 +163,6 @@ int main(int argc, char *argv[])
 			break;
 		case '?':
 			usage(EXIT_FAILURE);
-			fprintf(stderr, "Show usage\n");
 			break;
 		default:
 			abort();
@@ -193,8 +192,8 @@ int main(int argc, char *argv[])
 
 	/* showcase */
 	for (i = 0; i < ncount; i++) {
-		if (i == 0)	/* wait 1/20 second for inquiring */
-			usleep(50000L);
+		if (i == 0)	/* wait 0.1 second for inquiring */
+			usleep(100000L);
 		if (ncount > 1 && is_vt100())
 			puts("[1J");	/* clear screen */
 		puts("QNAME       CURDEPTH  PERCENT   GET       PUT");
