@@ -1,13 +1,12 @@
 #!/usr/bin/make -f
-# compile on AIX 6.1 with gcc
 
 SHELL = /bin/sh
 CC = gcc
 CFLAGS = -O2 -std=c99 -Wall -Wextra -Wshadow -Werror
-CPPFLAGS = -DDEBUG -I.
+CPPFLAGS = -I.
 LDFLAGS = -s -L.
 LDLIBS = -lmqm_r -pthread
-OBJS = qmon.o util.o
+OBJS = main.o qmon.o mqcomm.o util.o
 PROG = qmon
 
 .SUFFIXES : .c .o
@@ -19,5 +18,5 @@ all : $(OBJS)
 	$(CC) -c $(CPPFLAGS) $(CFLAGS) -o $@ $<
 
 clean :
-	-rm $(OBJS) $(PROG)
+	-rm $(OBJS)
 	-rm *?~

@@ -1,6 +1,6 @@
-extern char *program_invocation_short_name;
+extern char *program_invocation_short_name; /* defined in main.c */
 
-bool is_vt100(void);
+int is_term(const char *term);
 char *strupr(char *string, int len);
 void err_exit(const char *format, ...);
-int get_int_arg(const char *arg);
+int parse_positive_int(const char *arg);
