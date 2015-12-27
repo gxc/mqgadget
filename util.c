@@ -10,8 +10,6 @@
 
 #include "util.h"
 
-extern char **environ;
-
 /* convert at the most `len' characters in `string' to uppercase */
 char *strupr(char *restrict string, int len)
 {
@@ -65,15 +63,8 @@ int parse_positive_int(const char *arg)
 	return (int)res;
 }
 
-/* return ture if TERM=`term', otherwise false */
+/* return ture if TERM=`term' and false otherwise */
 int is_term(const char *term)
 {
-	char **ep;
-
-	for (ep = environ; *ep; ep++)
-		if (strncmp(*ep, "TERM", 4) == 0
-		    && strncmp(*ep + 5, term, strlen(term)) == 0)
-			return true;
-
-	return false;
+	return strcmp(getenv("TERM"), term) == 0;
 }
